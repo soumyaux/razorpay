@@ -27,7 +27,9 @@ function WhatsAppLogo() {
 }
 
 const SHARE_URL = typeof window !== 'undefined' ? window.location.href : 'https://lu.ma/ai-x-design'
-const SHARE_TEXT = 'Join me at AI x Design Meetup @Razorpay on Wed, 24 June!'
+const EVENT_DATE_SHORT = new Date().toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'long' })
+const EVENT_DATE_LONG = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' })
+const SHARE_TEXT = `Join me at AI x Design Meetup @Razorpay on ${EVENT_DATE_SHORT}!`
 
 /** Returns true when the viewport is below Blade's `m` breakpoint (mobile). */
 function useIsMobile() {
@@ -92,7 +94,7 @@ export function ShareModal({ isOpen, onDismiss }: ShareModalProps) {
       <Box display="flex" flexDirection="column" gap="spacing.1">
         <Heading size="small">AI x Design Meetup @Razorpay</Heading>
         <Text size="small" color="surface.text.gray.muted">
-          Wednesday, 24 June · Razorpay Arena Office, Koramangala
+          {EVENT_DATE_LONG} · Razorpay Arena Office, Koramangala
         </Text>
       </Box>
 

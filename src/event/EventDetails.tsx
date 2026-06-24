@@ -44,11 +44,9 @@ const MAP_SRC =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.539614690136!2d77.60737127657983!3d12.937284687374934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15716159ad17%3A0x822cd424898295d9!2sRazorpay%20(Arena%20Office)!5e0!3m2!1sen!2sin!4v1782320814012!5m2!1sen!2sin'
 
 function CalendarChip() {
-  const eventDate = new Date(2026, 5, 24) // June 24, 2026
   const today = new Date()
-  const isToday = today.getDate() === eventDate.getDate() &&
-                  today.getMonth() === eventDate.getMonth() &&
-                  today.getFullYear() === eventDate.getFullYear()
+  const month = today.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()
+  const day = today.getDate()
 
   return (
     <Box
@@ -62,12 +60,12 @@ function CalendarChip() {
     >
       <Box backgroundColor="surface.background.primary.intense" paddingY="spacing.1">
         <Text size="xsmall" weight="semibold" textAlign="center" color="surface.text.staticWhite.normal">
-          {isToday ? 'TODAY' : 'JUN'}
+          {month}
         </Text>
       </Box>
       <Box paddingY="spacing.2">
         <Heading size="small" textAlign="center">
-          {isToday ? '🕐' : '24'}
+          {day}
         </Heading>
       </Box>
     </Box>
@@ -88,17 +86,19 @@ function SectionLabel({ children }: { children: string }) {
 export function EventDetails() {
   const [isShareOpen, setIsShareOpen] = useState(false)
 
-  const eventDate = new Date(2026, 5, 24) // June 24, 2026
   const today = new Date()
-  const isToday = today.getDate() === eventDate.getDate() &&
-                  today.getMonth() === eventDate.getMonth() &&
-                  today.getFullYear() === eventDate.getFullYear()
-
-  const dateDisplay = isToday ? 'Today' : 'Wednesday, 24 June'
+  const dateDisplay = today.toLocaleDateString('en-US', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  })
 
   const addToCalendar = () => {
-    const eventStart = new Date(2026, 5, 24, 19, 30) // 7:30 PM
-    const eventEnd = new Date(2026, 5, 24, 23, 0) // 11:00 PM
+    const y = today.getFullYear()
+    const mo = today.getMonth()
+    const d = today.getDate()
+    const eventStart = new Date(y, mo, d, 19, 30) // 7:30 PM today
+    const eventEnd = new Date(y, mo, d, 23, 0) // 11:00 PM today
 
     const startDateTime = eventStart.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
     const endDateTime = eventEnd.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
