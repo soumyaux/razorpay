@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local secrets (Anthropic API key etc.)
+.env.local
+.env*.local

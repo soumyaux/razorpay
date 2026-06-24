@@ -240,13 +240,19 @@ END:VCALENDAR`
 
             <Divider />
 
-            <Box display="flex" alignItems="center" justifyContent="space-between" gap="spacing.3">
+            <Box
+              display="flex"
+              flexDirection={{ base: 'column', m: 'row' }}
+              alignItems={{ base: 'stretch', m: 'center' }}
+              justifyContent="space-between"
+              gap="spacing.3"
+            >
               <Box display="flex" flexDirection="column" gap="spacing.1">
                 <Text weight="semibold" color="surface.text.gray.normal">
                   Get Ready for the Event
                 </Text>
                 <Text size="small" color="surface.text.gray.muted">
-                  Profile Complete · Reminder: SMS & Email
+                  Reminder: SMS & Email
                 </Text>
               </Box>
               <Button
