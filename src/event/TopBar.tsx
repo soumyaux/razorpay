@@ -56,7 +56,7 @@ export function TopBar({ colorScheme, onToggleColorScheme }: TopBarProps) {
       >
         {/* Brand + primary nav */}
         <Box display="flex" alignItems="center" gap="spacing.7">
-          <Box width="28px" height="28px" borderRadius="medium" overflow="hidden">
+          <Box width="spacing.7" height="spacing.7" borderRadius="medium" overflow="hidden">
             <img
               src={lumaLogo}
               alt="Luma"

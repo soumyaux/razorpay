@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useTheme } from '@razorpay/blade/components'
 
 type TiltCardProps = {
   children: ReactNode
@@ -18,6 +19,9 @@ const isTouchDevice =
   ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 
 export function TiltCard({ children, maxTilt = 14 }: TiltCardProps) {
+  const { theme } = useTheme()
+  // Blade static-white token drives the glare; alpha fade comes from color-mix.
+  const glareColor = theme.colors.surface.text.staticWhite.normal
   const ref = useRef<HTMLDivElement>(null)
 
   // Normalised pointer/orientation position in range [-0.5, 0.5].
@@ -113,7 +117,7 @@ export function TiltCard({ children, maxTilt = 14 }: TiltCardProps) {
   const glareBackground = useTransform(
     glareX,
     (x) =>
-      `radial-gradient(circle at ${x} 0%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%)`,
+      `radial-gradient(circle at ${x} 0%, color-mix(in srgb, ${glareColor} 55%, transparent), transparent 60%)`,
   )
 
   return (

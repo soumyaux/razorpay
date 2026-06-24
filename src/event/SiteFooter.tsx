@@ -27,7 +27,7 @@ export function SiteFooter() {
           flexWrap="wrap"
         >
           <Box display="flex" alignItems="center" gap="spacing.5">
-            <Box width="20px" height="20px" borderRadius="medium" overflow="hidden">
+            <Box width="spacing.6" height="spacing.6" borderRadius="medium" overflow="hidden">
               <img
                 src={lumaLogo}
                 alt="Luma"

@@ -34,7 +34,9 @@ const schedule = [
 
 function AppleWalletIcon() {
   return (
-    <img src={appleWallet} alt="" style={{ width: '20px', height: '20px', display: 'block' }} />
+    <Box width="spacing.6" height="spacing.6">
+      <img src={appleWallet} alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+    </Box>
   )
 }
 
@@ -50,7 +52,7 @@ function CalendarChip() {
 
   return (
     <Box
-      width="48px"
+      width="spacing.10"
       flexShrink={0}
       borderRadius="medium"
       overflow="hidden"
@@ -170,8 +172,8 @@ END:VCALENDAR`
             display="flex"
             alignItems="center"
             justifyContent="center"
-            width="48px"
-            height="48px"
+            width="spacing.10"
+            height="spacing.10"
             flexShrink={0}
             borderRadius="medium"
             borderWidth="thin"

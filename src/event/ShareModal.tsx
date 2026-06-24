@@ -19,7 +19,11 @@ import { TiltCard } from './TiltCard'
 
 /** Custom brand icon — Blade Button accepts a component in its `icon` slot. */
 function WhatsAppLogo() {
-  return <img src={whatsapp} alt="" style={{ width: '20px', height: '20px', display: 'block' }} />
+  return (
+    <Box width="spacing.6" height="spacing.6">
+      <img src={whatsapp} alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+    </Box>
+  )
 }
 
 const SHARE_URL = typeof window !== 'undefined' ? window.location.href : 'https://lu.ma/ai-x-design'

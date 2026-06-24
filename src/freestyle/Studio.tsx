@@ -33,7 +33,10 @@ const chatBgUrl = new URL('../assets/chat bg.avif', import.meta.url).href
 const ChatBackdrop = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+  background-image: linear-gradient(
+      color-mix(in srgb, ${({ theme }) => theme.colors.surface.text.staticWhite.normal} 35%, transparent),
+      color-mix(in srgb, ${({ theme }) => theme.colors.surface.text.staticWhite.normal} 35%, transparent)
+    ),
     url(${chatBgUrl});
   background-size: cover;
   background-position: center;
@@ -174,11 +177,11 @@ export function Studio() {
                   <Text size="small" color="surface.text.gray.subtle">
                     Assembling Blade components…
                   </Text>
-                  <Skeleton width="55%" height="28px" borderRadius="medium" />
-                  <Skeleton width="100%" height="16px" borderRadius="medium" />
-                  <Skeleton width="88%" height="16px" borderRadius="medium" />
-                  <Skeleton width="100%" height="44px" borderRadius="medium" />
-                  <Skeleton width="40%" height="16px" borderRadius="medium" />
+                  <Skeleton width="55%" height="spacing.7" borderRadius="medium" />
+                  <Skeleton width="100%" height="spacing.5" borderRadius="medium" />
+                  <Skeleton width="88%" height="spacing.5" borderRadius="medium" />
+                  <Skeleton width="100%" height="spacing.9" borderRadius="medium" />
+                  <Skeleton width="40%" height="spacing.5" borderRadius="medium" />
                 </Box>
               )}
 
