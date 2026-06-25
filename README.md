@@ -1,4 +1,4 @@
-# AI x Design Meetup — Razorpay Blade
+# AI x Design Meetup — Razorpay Blade Build Challenge
 
 A demo app built **exclusively** with Razorpay's [Blade Design System](https://blade.razorpay.com/)
 (`@razorpay/blade`). Every piece of UI uses real Blade components and design
