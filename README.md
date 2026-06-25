@@ -1,32 +1,73 @@
-# React + TypeScript + Vite
+# AI x Design Meetup — Razorpay Blade
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A demo app built **exclusively** with Razorpay's [Blade Design System](https://blade.razorpay.com/)
+(`@razorpay/blade`). Every piece of UI uses real Blade components and design
+tokens — no raw hex, spacing, or fonts — so the result never drifts from
+Razorpay's design language.
 
-Currently, two official plugins are available:
+The app has two parts:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Level 1 — Event Page** — a pixel-faithful recreation of the "AI x Design
+  Meetup @Razorpay" event page (hero, sidebar, details, share sheet), rebuilt
+  entirely from Blade components, with a light/dark theme toggle.
+- **Level 2 — Freestyle Studio** — describe any screen in plain language and it
+  generates an on-system Blade UI. With an Anthropic API key it uses live AI;
+  without one it falls back to **offline mode** (hand-picked Blade templates),
+  so the app runs with no key.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [@razorpay/blade](https://blade.razorpay.com/) — the only component source
+- React 18 + TypeScript + Vite
+- styled-components, framer-motion
+- Oxlint
 
-## Expanding the Oxlint configuration
+## Getting started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The dev server runs over **HTTPS** on your local network (via
+`@vitejs/plugin-basic-ssl`) — this is required for the mobile gyroscope, which
+browsers only allow in a secure context. Open the `https://192.168.x.x:…` URL on
+your phone and accept the self-signed certificate warning.
+
+### Enabling live AI (Level 2)
+
+Live generation is optional. To enable it, add an Anthropic API key:
+
+```bash
+cp .env.example .env.local
+# then edit .env.local and set ANTHROPIC_API_KEY=sk-ant-...
+```
+
+Get a key at [console.anthropic.com](https://console.anthropic.com/). The key is
+read only by the local dev server and is never bundled into the client.
+Without a key, Level 2 runs in offline mode.
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server (HTTPS, LAN-exposed) |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run Oxlint |
+
+## Custom enhancements
+
+A few touches go beyond the stock Blade component set:
+
+- **3D gyroscope-tilt share banner (mobile)** — a custom enhancement built on
+  `framer-motion` and the Device Orientation API. The share banner tilts as you
+  move your phone (and follows the pointer on desktop). It is *not* a Blade
+  component; it wraps Blade content in a custom motion layer and asks for iOS
+  motion permission on first interaction.
+
+## Notes
+
+- UI renders inside Blade's provider/theme; light theme by default.
+- Built to be accessible and responsive by default (labelled controls,
+  contrast-safe tokens, ≥44px touch targets, mobile → desktop layouts).
