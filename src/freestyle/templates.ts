@@ -198,6 +198,382 @@ const TEMPLATES: Template[] = [
       ],
     },
   },
+  {
+    label: 'OTP verification',
+    keywords: ['otp', 'verify code', 'verification code', 'two factor', '2fa', 'one time', 'confirm code'],
+    spec: {
+      type: 'card',
+      title: 'Enter the code',
+      subtitle: 'We sent a 6-digit code to +91 ••••• 43210',
+      children: [
+        { type: 'input', label: 'Verification code', placeholder: '••• •••', inputType: 'number' },
+        { type: 'button', text: 'Verify', variant: 'primary', isFullWidth: true },
+        { type: 'text', text: "Didn't get it? Resend in 0:28", size: 'small', color: 'surface.text.gray.subtle' },
+      ],
+    },
+  },
+  {
+    label: 'Reset password',
+    keywords: ['reset password', 'forgot password', 'change password', 'recover'],
+    spec: {
+      type: 'card',
+      title: 'Reset your password',
+      subtitle: "Enter your email and we'll send a reset link",
+      children: [
+        { type: 'input', label: 'Email', placeholder: 'you@company.com', inputType: 'email' },
+        { type: 'button', text: 'Send reset link', variant: 'primary', isFullWidth: true },
+        { type: 'text', text: 'Back to sign in', size: 'small', color: 'surface.text.gray.subtle' },
+      ],
+    },
+  },
+  {
+    label: 'Invoice',
+    keywords: ['invoice', 'bill', 'statement'],
+    spec: {
+      type: 'card',
+      title: 'Invoice #INV-2041',
+      subtitle: 'Due 30 Jun 2026',
+      badge: { text: 'Unpaid', color: 'notice' },
+      children: [
+        { type: 'box', direction: 'row', justify: 'space-between', children: [
+          { type: 'text', text: 'Design retainer', color: 'surface.text.gray.subtle' },
+          { type: 'text', text: '₹40,000', weight: 'medium' },
+        ] },
+        { type: 'box', direction: 'row', justify: 'space-between', children: [
+          { type: 'text', text: 'GST (18%)', color: 'surface.text.gray.subtle' },
+          { type: 'text', text: '₹7,200', weight: 'medium' },
+        ] },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Amount due', weight: 'semibold' },
+          { type: 'amount', value: 47200, currency: 'INR' },
+        ] },
+        { type: 'button', text: 'Pay invoice', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Transactions list',
+    keywords: ['transactions', 'transaction', 'payments list', 'history', 'activity', 'ledger'],
+    spec: {
+      type: 'card',
+      title: 'Recent transactions',
+      children: [
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Acme Tech · Today', weight: 'medium' },
+          { type: 'amount', value: 1999, currency: 'INR' },
+        ] },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Globex · Yesterday', weight: 'medium' },
+          { type: 'amount', value: 8499, currency: 'INR' },
+        ] },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Initech · 22 Jun', weight: 'medium' },
+          { type: 'badge', text: 'Refunded', color: 'notice', emphasis: 'subtle' },
+        ] },
+        { type: 'button', text: 'See all', variant: 'tertiary' },
+      ],
+    },
+  },
+  {
+    label: 'Profile card',
+    keywords: ['profile card', 'user profile', 'my profile', 'bio'],
+    spec: {
+      type: 'card',
+      title: 'Jane Doe',
+      subtitle: 'Product Designer · Bengaluru',
+      badge: { text: 'Pro', color: 'positive' },
+      children: [
+        { type: 'text', text: 'Designing payment experiences at Acme Tech.', color: 'surface.text.gray.subtle' },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'button', text: 'Message', variant: 'primary' },
+          { type: 'button', text: 'View work', variant: 'secondary' },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Shopping cart',
+    keywords: ['cart', 'shopping cart', 'basket', 'bag'],
+    spec: {
+      type: 'card',
+      title: 'Your cart',
+      subtitle: '2 items',
+      children: [
+        { type: 'box', direction: 'row', justify: 'space-between', children: [
+          { type: 'text', text: 'Wireless mouse', color: 'surface.text.gray.subtle' },
+          { type: 'text', text: '₹1,299', weight: 'medium' },
+        ] },
+        { type: 'box', direction: 'row', justify: 'space-between', children: [
+          { type: 'text', text: 'USB-C cable', color: 'surface.text.gray.subtle' },
+          { type: 'text', text: '₹499', weight: 'medium' },
+        ] },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Total', weight: 'semibold' },
+          { type: 'amount', value: 1798, currency: 'INR' },
+        ] },
+        { type: 'button', text: 'Checkout', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Notifications',
+    keywords: ['notifications', 'notification', 'alerts', 'inbox'],
+    spec: {
+      type: 'box',
+      direction: 'column',
+      gap: 'spacing.4',
+      children: [
+        { type: 'heading', text: 'Notifications', size: 'large' },
+        { type: 'alert', title: 'Payout completed', description: '₹23,900 was settled to your bank account.', color: 'positive' },
+        { type: 'alert', title: 'KYC pending', description: 'Verify your documents to keep payouts active.', color: 'notice' },
+        { type: 'alert', title: 'New feature', description: 'You can now schedule recurring payouts.', color: 'information' },
+      ],
+    },
+  },
+  {
+    label: 'Order tracking',
+    keywords: ['order tracking', 'track order', 'delivery', 'shipment', 'tracking', 'status'],
+    spec: {
+      type: 'card',
+      title: 'Order #RZP-8842',
+      subtitle: 'Arriving tomorrow by 7 PM',
+      badge: { text: 'Out for delivery', color: 'information' },
+      children: [
+        { type: 'text', text: 'Ordered · 24 Jun', color: 'surface.text.gray.subtle' },
+        { type: 'text', text: 'Shipped · 25 Jun', color: 'surface.text.gray.subtle' },
+        { type: 'text', text: 'Out for delivery · 26 Jun', weight: 'medium' },
+        { type: 'divider' },
+        { type: 'button', text: 'Track on map', variant: 'secondary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Add payment method',
+    keywords: ['add card', 'payment method', 'add bank', 'bank account', 'card details', 'add money', 'wallet topup'],
+    spec: {
+      type: 'card',
+      title: 'Add a card',
+      subtitle: 'Your details are encrypted and secure',
+      children: [
+        { type: 'input', label: 'Card number', placeholder: '1234 5678 9012 3456', inputType: 'number' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'input', label: 'Expiry', placeholder: 'MM/YY' },
+          { type: 'password', label: 'CVV', placeholder: '•••' },
+        ] },
+        { type: 'input', label: 'Name on card', placeholder: 'Jane Doe' },
+        { type: 'button', text: 'Add card', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Payout / withdraw',
+    keywords: ['payout', 'withdraw', 'transfer money', 'send money', 'cash out'],
+    spec: {
+      type: 'card',
+      title: 'Withdraw funds',
+      subtitle: 'Available balance ₹84,200',
+      children: [
+        { type: 'input', label: 'Amount', placeholder: '5000', inputType: 'number' },
+        { type: 'select', label: 'To account', placeholder: 'Select account', options: ['HDFC ••4321', 'ICICI ••8890', 'Add new account'] },
+        { type: 'alert', description: 'Withdrawals are processed within 2 hours on business days.', color: 'information' },
+        { type: 'button', text: 'Withdraw', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Wallet / balance',
+    keywords: ['wallet', 'balance', 'funds', 'account balance'],
+    spec: {
+      type: 'card',
+      title: 'Wallet',
+      children: [
+        { type: 'text', text: 'Available balance', color: 'surface.text.gray.subtle' },
+        { type: 'amount', value: 84200, currency: 'INR' },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'button', text: 'Add money', variant: 'primary' },
+          { type: 'button', text: 'Withdraw', variant: 'secondary' },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Onboarding welcome',
+    keywords: ['onboarding', 'welcome', 'get started', 'setup', 'first time'],
+    spec: {
+      type: 'card',
+      children: [
+        { type: 'box', direction: 'column', gap: 'spacing.4', align: 'center', children: [
+          { type: 'badge', text: 'Step 1 of 3', color: 'information', emphasis: 'subtle' },
+          { type: 'display', text: 'Welcome to Razorpay', size: 'small' },
+          { type: 'text', text: 'Let’s set up your account so you can start accepting payments.', color: 'surface.text.gray.subtle' },
+          { type: 'button', text: 'Get started', variant: 'primary', isFullWidth: true },
+          { type: 'button', text: 'Skip for now', variant: 'tertiary' },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Delete confirmation',
+    keywords: ['delete', 'confirm', 'are you sure', 'remove', 'discard'],
+    spec: {
+      type: 'card',
+      title: 'Delete this item?',
+      children: [
+        { type: 'alert', description: 'This action cannot be undone. The item will be permanently removed.', color: 'negative' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'button', text: 'Cancel', variant: 'secondary', isFullWidth: true },
+          { type: 'button', text: 'Delete', variant: 'primary', isFullWidth: true },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Empty state',
+    keywords: ['empty', 'no data', 'nothing here', 'empty state'],
+    spec: {
+      type: 'card',
+      children: [
+        { type: 'box', direction: 'column', gap: 'spacing.4', align: 'center', children: [
+          { type: 'badge', text: 'Nothing yet', color: 'neutral', emphasis: 'subtle' },
+          { type: 'heading', text: 'No transactions yet', size: 'medium' },
+          { type: 'text', text: 'When you receive a payment, it will show up here.', color: 'surface.text.gray.subtle' },
+          { type: 'button', text: 'Create a payment link', variant: 'primary' },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Error / 404',
+    keywords: ['error', '404', 'not found', 'something went wrong', 'broken'],
+    spec: {
+      type: 'card',
+      children: [
+        { type: 'box', direction: 'column', gap: 'spacing.4', align: 'center', children: [
+          { type: 'display', text: '404', size: 'medium' },
+          { type: 'heading', text: 'Page not found', size: 'medium' },
+          { type: 'text', text: 'The page you’re looking for doesn’t exist or was moved.', color: 'surface.text.gray.subtle' },
+          { type: 'button', text: 'Go home', variant: 'primary' },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Feedback rating',
+    keywords: ['rating', 'rate', 'review', 'survey', 'nps', 'how was'],
+    spec: {
+      type: 'card',
+      title: 'How was your experience?',
+      subtitle: 'Your feedback helps us improve',
+      children: [
+        { type: 'select', label: 'Rating', placeholder: 'Choose a rating', options: ['⭐️ 1', '⭐️ 2', '⭐️ 3', '⭐️ 4', '⭐️ 5'] },
+        { type: 'textarea', label: 'Tell us more', placeholder: 'What went well? What could be better?' },
+        { type: 'button', text: 'Submit feedback', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Invite team members',
+    keywords: ['invite', 'team', 'members', 'collaborator', 'add user', 'workspace'],
+    spec: {
+      type: 'card',
+      title: 'Invite your team',
+      subtitle: 'Add people to your Razorpay workspace',
+      children: [
+        { type: 'input', label: 'Email address', placeholder: 'teammate@company.com', inputType: 'email' },
+        { type: 'select', label: 'Role', placeholder: 'Select a role', options: ['Admin', 'Manager', 'Viewer'] },
+        { type: 'checkbox', label: 'Send a welcome email' },
+        { type: 'button', text: 'Send invite', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Shipping address',
+    keywords: ['address', 'shipping', 'delivery address', 'location form'],
+    spec: {
+      type: 'card',
+      title: 'Shipping address',
+      children: [
+        { type: 'input', label: 'Full name', placeholder: 'Jane Doe' },
+        { type: 'input', label: 'Address line', placeholder: 'Flat / House no, Street' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'input', label: 'City', placeholder: 'Bengaluru' },
+          { type: 'input', label: 'PIN code', placeholder: '560001', inputType: 'number' },
+        ] },
+        { type: 'select', label: 'State', placeholder: 'Select state', options: ['Karnataka', 'Maharashtra', 'Delhi', 'Tamil Nadu'] },
+        { type: 'button', text: 'Save address', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Book appointment',
+    keywords: ['book', 'appointment', 'schedule', 'reservation', 'slot', 'booking'],
+    spec: {
+      type: 'card',
+      title: 'Book an appointment',
+      subtitle: 'Pick a service and time',
+      children: [
+        { type: 'select', label: 'Service', placeholder: 'Select a service', options: ['Consultation', 'Demo', 'Support call'] },
+        { type: 'select', label: 'Time slot', placeholder: 'Choose a slot', options: ['10:00 AM', '11:30 AM', '2:00 PM', '4:30 PM'] },
+        { type: 'input', label: 'Your name', placeholder: 'Jane Doe' },
+        { type: 'button', text: 'Confirm booking', variant: 'primary', isFullWidth: true },
+      ],
+    },
+  },
+  {
+    label: 'Newsletter signup',
+    keywords: ['newsletter', 'subscribe', 'mailing list', 'updates', 'waitlist'],
+    spec: {
+      type: 'card',
+      children: [
+        { type: 'box', direction: 'column', gap: 'spacing.4', align: 'center', children: [
+          { type: 'heading', text: 'Stay in the loop', size: 'medium' },
+          { type: 'text', text: 'Get product updates and tips, once a month. No spam.', color: 'surface.text.gray.subtle' },
+          { type: 'input', label: 'Email', placeholder: 'you@company.com', inputType: 'email' },
+          { type: 'button', text: 'Subscribe', variant: 'primary', isFullWidth: true },
+        ] },
+      ],
+    },
+  },
+  {
+    label: 'Apply coupon',
+    keywords: ['coupon', 'promo', 'discount', 'offer', 'voucher', 'redeem'],
+    spec: {
+      type: 'card',
+      title: 'Apply a coupon',
+      children: [
+        { type: 'input', label: 'Coupon code', placeholder: 'SAVE20' },
+        { type: 'button', text: 'Apply', variant: 'primary', isFullWidth: true },
+        { type: 'alert', description: 'Coupon WELCOME10 applied — you saved ₹200.', color: 'positive' },
+      ],
+    },
+  },
+  {
+    label: 'Subscription management',
+    keywords: ['manage subscription', 'my plan', 'billing', 'renew', 'cancel subscription'],
+    spec: {
+      type: 'card',
+      title: 'Your subscription',
+      subtitle: 'Growth plan · renews 1 Jul 2026',
+      badge: { text: 'Active', color: 'positive' },
+      children: [
+        { type: 'box', direction: 'row', justify: 'space-between', align: 'center', children: [
+          { type: 'text', text: 'Monthly cost', color: 'surface.text.gray.subtle' },
+          { type: 'amount', value: 2999, currency: 'INR' },
+        ] },
+        { type: 'divider' },
+        { type: 'box', direction: 'row', gap: 'spacing.4', children: [
+          { type: 'button', text: 'Change plan', variant: 'secondary' },
+          { type: 'button', text: 'Cancel', variant: 'tertiary' },
+        ] },
+      ],
+    },
+  },
 ]
 
 /** A generic form used when nothing matches confidently. */

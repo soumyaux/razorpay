@@ -146,6 +146,19 @@ export function Studio() {
               </Button>
             ))}
           </Box>
+
+          <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3" marginTop="spacing.3">
+            <Badge color="positive" emphasis="subtle" icon={CheckCircleIcon}>
+              Offline mode · no API needed
+            </Badge>
+            <Box maxWidth="520px">
+              <Text size="small" color="surface.text.gray.subtle" textAlign="center">
+                Offline mode hand-picks a Blade screen, so the design may vary. To explore
+                the real power — live AI that builds any screen from scratch — connect a
+                Claude API key. It's kept off here to avoid token &amp; API costs.
+              </Text>
+            </Box>
+          </Box>
         </Box>
         </Box>
       </Hero>
