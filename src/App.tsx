@@ -3,12 +3,16 @@ import { Box, Button, BladeProvider } from '@razorpay/blade/components'
 import { bladeTheme } from '@razorpay/blade/tokens'
 import { EventPage } from './event/EventPage'
 import { Studio } from './freestyle/Studio'
+import { useGyroPermission } from './event/useGyroPermission'
 
 type Level = 'level1' | 'level2'
 
 function App() {
   const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light')
   const [level, setLevel] = useState<Level>('level1')
+
+  // Ask for motion-sensor permission on the first tap after every page load.
+  useGyroPermission()
 
   const toggleScheme = () =>
     setColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'))

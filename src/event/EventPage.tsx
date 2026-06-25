@@ -3,6 +3,7 @@ import { TopBar } from './TopBar'
 import { EventSidebar } from './EventSidebar'
 import { EventDetails } from './EventDetails'
 import { SiteFooter } from './SiteFooter'
+import background from '../assets/background.png'
 
 type EventPageProps = {
   colorScheme: 'light' | 'dark'
@@ -11,8 +12,31 @@ type EventPageProps = {
 
 export function EventPage({ colorScheme, onToggleColorScheme }: EventPageProps) {
   return (
-    <Box backgroundColor="surface.background.gray.subtle" minHeight="100vh" width="100%">
-      <Box width="100%">
+    <Box
+      backgroundColor="surface.background.gray.subtle"
+      minHeight="100vh"
+      width="100%"
+      position="relative"
+    >
+      {/* Decorative page backdrop — light mode only. Hidden in dark mode so the
+          dark surface token shows through cleanly. Box can't render an image
+          background, so this is a plain non-interactive layer behind content. */}
+      {colorScheme === 'light' ? (
+        <div
+          aria-hidden
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundImage: `url(${background})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
+      ) : null}
+      <Box width="100%" position="relative" zIndex={1}>
         <TopBar colorScheme={colorScheme} onToggleColorScheme={onToggleColorScheme} />
 
         <Box

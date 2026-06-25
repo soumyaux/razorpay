@@ -91,28 +91,9 @@ export function TiltCard({ children, maxTilt = 14 }: TiltCardProps) {
     return () => window.removeEventListener('deviceorientation', handleOrientation, true)
   }, [px, py])
 
-  // Ask for gyroscope permission on the very first touch ANYWHERE on the page,
-  // so the iOS prompt appears as early as possible (Safari requires a gesture —
-  // it can't be triggered on load). Fires once, then removes itself.
-  useEffect(() => {
-    const DOE = window.DeviceOrientationEvent as unknown as {
-      requestPermission?: () => Promise<'granted' | 'denied'>
-    }
-    const request = DOE?.requestPermission
-    if (typeof request !== 'function') return
-
-    const askOnce = () => {
-      request.call(DOE).catch(() => {})
-      window.removeEventListener('touchend', askOnce)
-      window.removeEventListener('click', askOnce)
-    }
-    window.addEventListener('touchend', askOnce, { once: true })
-    window.addEventListener('click', askOnce, { once: true })
-    return () => {
-      window.removeEventListener('touchend', askOnce)
-      window.removeEventListener('click', askOnce)
-    }
-  }, [])
+  // First-gesture permission ask is handled app-wide in useGyroPermission,
+  // so it fires on every page load — not just when this card mounts. The
+  // onTouchStart handler below still re-requests as a per-card backup.
 
   const glareBackground = useTransform(
     glareX,
@@ -128,8 +109,18 @@ export function TiltCard({ children, maxTilt = 14 }: TiltCardProps) {
       onTouchStart={requestGyroPermission}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      // Perspective gives the children real depth.
-      style={{ width: '100%', perspective: 900, touchAction: 'pan-y' }}
+      // Perspective gives the children real depth. The horizontal inset gives
+      // the tilt room to breathe: when the card rotates, its near edge projects
+      // outward — without this padding that edge gets clipped by the bottom
+      // sheet's overflow (showed up as content cut off on the left on mobile).
+      style={{
+        width: '100%',
+        boxSizing: 'border-box',
+        paddingLeft: 12,
+        paddingRight: 12,
+        perspective: 900,
+        touchAction: 'pan-y',
+      }}
     >
       <motion.div
         style={{
