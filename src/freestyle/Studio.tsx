@@ -82,13 +82,13 @@ export function Studio() {
     setActiveTab('preview')
     setStatus('building')
     setSpec(null)
-    // brief delay so the chat-input shows its "generating" state
+    // delay so the chat-input shows its "generating" state for longer
     timerRef.current = window.setTimeout(() => {
       const match = matchTemplate(text)
       setMatchLabel(match.label)
       setSpec(match.spec)
       setStatus('done')
-    }, 600)
+    }, 4000)
   }
 
   const handleStop = () => {
